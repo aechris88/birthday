@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title></title>
+		<style>
+			input[type=number]{
+				width: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		What is your birthday?<br>
+		<input type = "number" id = "month" min="1" max="12"/>
+		<input type = "number" id = "day" min="1" max="31"/>
+		<input type = "number" id = "year" min = "1971"/>
+		<button onClick="calcDates()">Calculate your age</button>
+		<br>
+		
+		<p id="tot"></p>
+		
+		
+		<script>
+			function calcDates(){
+				var birthday=new Date();
+				birthday.setMonth(document.getElementById("month").value-1);
+				birthday.setDate(document.getElementById("day").value);
+				birthday.setFullYear(document.getElementById("year").value);
+				var today=Date.now();
+				var milis = today - birthday;
+				milis = milis/31536000000;
+				var x = parseFloat(milis).toFixed(0);
+				document.getElementById("tot").innerHTML="You are " + x + " years old.";
+			}
+		</script>
+	</body>
+</html>
